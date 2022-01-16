@@ -1,32 +1,17 @@
 import pokemonApi from "../api/api";
 
 const getPokemons = () => {
-    
     const pokemonsArr = Array.from(Array(650));
-
     return pokemonsArr.map( (_, index) => index + 1)
 }
 
 const getPokemonOptions = async () => {
-
     const mixedPokemons = getPokemons().sort( () => Math.random() - 0.5 )
-    
-    //console.log(mixedPokemons);
-
     const pokemons = await getPokemonNames(mixedPokemons.splice(0, 4))
-
-    //console.table(pokemons)
-
     return pokemons;
 }
 
 const getPokemonNames = async ([a, b, c, d] = []) => {
-    
-    // Get Pokemon via API sing Axios
-    // const pokemonResp = await pokemonApi.get(`/2`)
-
-    // console.log(pokemonResp.data.name);
-    // console.log(pokemonResp.data.id);
     
     // Crear un array de promesas para hacerlas todas
     const promiseArr = [
